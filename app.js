@@ -32,7 +32,6 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
-var port = 5000;
-app.listen(port, function(err) {
+app.listen(5000, function(err) {
     console.log('Running on port ' + port);
 });
