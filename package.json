@@ -32,6 +32,7 @@
     "chalk": "latest",
     "color-convert": "~1.2.2",
     "ease-component": "latest",
+    "ejs": "^2.4.1",
     "es6-shim": "latest",
     "express": "^4.13.4",
     "lodash.clonedeep": "^4.3.0",
