@@ -7,17 +7,30 @@ app.use(express.static('src/views'));
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
-var SerialPort = require("serialport").SerialPort;
-var serialport = new SerialPort("/dev/cu.usbmodem1411");
+//var SerialPort = require("serialport").SerialPort;
+//var serialport = new SerialPort("/dev/cu.usbmodem1411", {
+//    parser: SerialPort.parsers.readline('\n')
+//});
+
+
+var serialport = require('serialport');
+var SerialPort = serialport.SerialPort;
+
+var port = new SerialPort('/dev/cu.usbmodem1411', {
+    parser: serialport.parsers.readline('\n')
+});
 
 var streamObj = {};
-serialport.on('data', function(data) {
-    // console.log('data received: ' + data);
+port.on('data', function(data) {
+    console.log('data received: ' + data);
+
     streamObj = data;
+    // streamObj = JSON.parse('{"herzfrequenz":"433","sauerstoffgehalt":"298","puls":"181"}');
+    // console.log(typeof(streamObj));
 });
 
 app.get('/', function(req, res) {
-    res.render('index', {title: 'hello world', number2: 334});
+    res.render('index');
 });
 
 var port = 5000;
