@@ -22,11 +22,10 @@ var port = new SerialPort('/dev/cu.usbmodem1411', {
 
 var streamObj = {};
 port.on('data', function(data) {
-    console.log('data received: ' + data);
-
     streamObj = data;
     // streamObj = JSON.parse('{"herzfrequenz":"433","sauerstoffgehalt":"298","puls":"181"}');
-    // console.log(typeof(streamObj));
+
+    // console.log('data received: ' + streamObj);
 });
 
 app.get('/', function(req, res) {
